@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/common_global.css"/>
+		<link rel="stylesheet" type="text/css" href="css/particulars.css"/>
+		<script src="JS/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="JS/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script src="JS/utils.js" type="text/javascript" charset="utf-8"></script>
+		<script src="JS/move.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		
+			window.onload=function(){
+////获取导航栏数据
+				var xhr=createXHR();
+				xhr.open("GET","newnav.json",true);
+				xhr.send();
+				var nav_ul=document.getElementsByClassName("nav_ul")[0];
+				
+				xhr.onreadystatechange=function(){
+					if (xhr.status==200&&xhr.readyState==4) {
+						var responseText=xhr.responseText;
+						var arr=JSON.parse(responseText);
+						var nav_li=nav_ul.getElementsByTagName("li");
+						var nav_div=document.getElementsByClassName("nav_div");
+						
+						for (var i =0 ;i<arr.length;i++) {
+							nav_li[i].index=i;
+							//创建每个nav标签内的dl
+	
+							for (var j=0 ;j<arr[i].a1.length;j++) {
+								 		var dl=document.createElement("dl");
+								 		nav_div[i].appendChild(dl);
+								 		var dt=document.createElement("dt");
+								 		dl.appendChild(dt);
+								 		var a=document.createElement("a");
+								 		dt.appendChild(a);
+								 		a.innerHTML=arr[i].a1[j].b1[0][0];
+								 		
+//								 		console.log(i);
+								 		//创建dd
+								 		for (var n=1;n<arr[i].a1[j].b1.length;n++) {
+								 			var dd=document.createElement("dd");
+								 			dl.appendChild(dd);
+								 			dd.innerHTML=arr[i].a1[j].b1[n][n];
+								 		}
+								}
+							
+							nav_li[i].onmouseover=function(){
+								nav_div[this.index].style.display="block";
+							}
+							nav_li[i].onmouseout=function(){	
+								nav_div[this.index].style.display="none";
+							}
+						}
+					}
+				}
+				
+//放大镜
+		var oS_box=document.getElementById('s_box');
+		var oS_position=document.getElementsByClassName("position_box")[0];
+		var oS_mark=document.getElementsByClassName("mark_box")[0];
+		var oB_box=document.getElementById('b_box');
+		var oB_box_all=document.getElementById('b_box_all')
+		oS_mark.onmouseover=function(){
+			oS_position.style.display='block';
+			oB_box.style.display='block';
+
+		}
+		oS_mark.onmouseout=function(){
+			oS_position.style.display='none';
+			oB_box.style.display='none';
+		}
+
+		oS_mark.onmousemove=function(event){
+			
+			var evt=event||window.event;
+
+			var left=evt.offsetX-oS_position.offsetWidth/2;
+			//console.log(left)
+			
+			if(left<0){
+				left=0;
+			}else if(left>oS_box.offsetWidth-oS_position.offsetWidth){
+				left=oS_box.offsetWidth-oS_position.offsetWidth
+			}
+			//console.log(left)
+			oS_position.style.left=left+'px';
+
+
+			var top=evt.offsetY-oS_position.offsetHeight/2;
+			if(top<0){
+				top=0;
+			}else if(top>oS_box.offsetHeight-oS_position.offsetHeight){
+				top=oS_box.offsetHeight-oS_position.offsetHeight
+			}
+			//console.log(top)
+			oS_position.style.top=top+'px';
+
+			//移动的比例  把X值和Y值换算成比例;
+
+			var proportionX=left/(oS_box.offsetWidth-oS_position.offsetWidth);
+			var proportionY=top/(oS_box.offsetHeight-oS_position.offsetHeight);
+
+			
+
+			//利用比例去算出大小不同的元素的偏移距离；
+
+			oB_box_all.style.left=-proportionX*(oB_box_all.offsetWidth-oB_box.offsetWidth)+'px';
+
+			oB_box_all.style.top=-proportionY*(oB_box_all.offsetHeight-oB_box.offsetHeight)+'px';
+
+		}
+		
+		//点击切换图片
+		$("#par-left-ul").find("li").on("mouseover",function(){
+			$("#par-left-ul").find("li").css("border","2px solid white");
+			$(this).css("border","2px solid #0069AA");
+			var num=$(this).index();
+			$("#s_box").find("img").css("display","none");
+			$("#s_box").find("img").eq(num).css("display","block");
+			$("#b_box_all").find("img").css("display","none");
+			$("#b_box_all").find("img").eq(num).css("display","block");
+		})
+//		$("#par-left-ul").find("li").on("mouseout",function(){
+//			$("#par-left-ul").find("li").css("border","2px solid white");
+//			$(this).css("border","2px solid #0069AA");
+//			var num=$(this).index();
+//			$("#s_box").find("img").css("display","none");
+//			$("#s_box").find("img").eq(num).css("display","block");
+//			$("#b_box_all").find("img").css("display","none");
+//			$("#b_box_all").find("img").eq(num).css("display","block");
+//		})								
+					
+				}
+				
+ 
+
+				
+
+
+$(window).scroll(function(){
+    if($(window).scrollTop() > 100){
+        $('.global-top3').css(
+           'position','fixed' 
+        ).css('top','0').css("z-index","100");
+        
+   }else{
+        $('.global-top3').css(
+          'position','static'
+        ).css(
+        	"top","101"
+        ).css("height","40px");
+        
+    }
+})
+
+			
+			
+	
+			
+			
+		</script>
+	</head>
+	<body>
+		<div class="global-top1">
+			<div class="clear">
+				<div class="reglog">
+					上午好，山姆欢迎您!
+					<a href="login.html" class="login">登录</a>
+					<span>丨</span>
+					<a href="enter.html" class="regist">注册</a>
+				</div>
+				<div class="top_right">
+					<a href=""><span>我的山姆</span><i>∨</i></a>
+					<a href=""><span>帮助中心</span><i>∨</i></a>
+					<a href=""><span>快购工具</span><i>∨</i></a>
+					<a href=""><span>会籍介绍</span><i></i></a>
+					<a href=""><span>掌上山姆</span><i>∨</i></a>
+				</div>
+			</div>
+			
+			</div>
+		<div class="global-top2">
+			<div class="header">
+				<div class="header_left">
+					<div class="shanghai">
+						上海
+					</div>
+					<div class="news-title">
+						山姆头条
+					</div>
+					<em>1/2</em>
+					<ul>
+						<li><a href="" style="color: white;">会员升级享12月优惠</a></li>
+						<li><a href="" style="color: white;">电子会员卡不再怕忘带</a></li>
+					</ul>
+				</div>
+				<div class="header_right">
+					<div class="right_ipt">
+						<input type="text" name="" id="ipt1" value="" />
+						<input type="button" name="" id="ipt2" value="" />
+					</div>
+					<span id="shop_car">
+						1
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="global-top3">
+
+			<div class="nav">
+				<ul class="nav_ul">
+					<li>
+						生鲜食品<div class="nav_div" id="nav_li1"></div>
+					</li>
+					<li>
+						粮油干货<div class="nav_div" id="nav_li2"></div>
+					</li>
+					<li>
+						零食饮料<div class="nav_div" id="nav_li3"></div>
+					</li>
+					<li>
+						酒水饮料<div class="nav_div" id="nav_li4"></div>
+					</li>
+					<li>
+						母婴玩具<div class="nav_div" id="nav_li5"></div>
+					</li>
+					<li>
+						个人美妆<div class="nav_div" id="nav_li6"></div>
+					</li>
+					<li>
+						家用电器<div class="nav_div" id="nav_li7"></div>
+					</li>
+					<li>
+						手机数码<div class="nav_div" id="nav_li8"></div>
+					</li>
+					<li>
+						家居清洁<div class="nav_div" id="nav_li9"></div>
+					</li>
+					<li>
+						办公户外<div class="nav_div" id="nav_li10"></div>
+					</li>
+					<li>
+						床品箱包<div class="nav_div" id="nav_li11"></div>
+					</li>
+				</ul>					
+			</div>1
+		</div>
+		<div class="par-content">
+			<div class="crumb">
+				<ul class="clear">
+					<li><a href="">首页</a><span>></span></li>
+					<li><a href="">食品</a><span>></span></li>
+					<li><a href="">零食/坚果/特产</a><span>></span></li>
+					<li><a href="">山核桃/坚果/炒货</a><span>></span></li>
+					<li><a href="">花生</a><span>></span></li>
+					<li><a href="">Member's Mark Member's Mark 花生仁2kg</a></li>
+				</ul>
+			</div>	
+		<!--商品详情-->
+		<div class="particulars clean">
+			<div class="par-left">
+				<div>
+					<ul id="par-left-ul">
+						<li><img src="img/par/1.webp" alt="" /></li>
+						<li><img src="img/par/2.webp" alt="" /></li>
+						<li><img src="img/par/3.webp" alt="" /></li>
+						<li><img src="img/par/4.webp" alt="" /></li>
+					</ul>
+				</div>
+				<div id="s_box">
+					<div class="mark_box"></div>
+					<img src="img/par/11.webp" style="width: 500px;height: 500px;" alt="">
+					<img src="img/par/22.webp" style="width: 500px;height: 500px;display: none;" alt="">
+					<img src="img/par/33.webp" style="width: 500px;height: 500px;display: none;" alt="">
+					<img src="img/par/44.webp" style="width: 500px;height: 500px;display: none;" alt="">
+					<div class='position_box'></div>
+				</div>
+				<div id="b_box">		
+					<div id="b_box_all">
+						<img src="img/par/11.webp" alt="">
+						<img src="img/par/22.webp" alt="" style="display: none;">
+						<img src="img/par/33.webp" alt="" style="display: none;">
+						<img src="img/par/44.webp" alt="" style="display: none;">
+					</div>		
+				</div>
+			<div class="par-right">
+				
+			</div>
+		</div>
+		</div>
+		
+	<!--尾部信息-->
+<div class="footer">
+	<div class="footer_list">
+		<div class="foot_left">
+			<img src="img/foot/footlogo.png"/>
+			<p>山姆会员网上商店</p>
+			<p>沃尔玛成员</p>
+		</div>
+		<dl>
+			<dt>新手指南</dt>
+			<dd class="foot_dd"><a href="">会籍介绍</a><a href="">购物流程</a>
+			<a href="">快购工具</a>
+			<a href="">使用优惠券</a>
+			<a href="">商品评论指南</a></dd>
+			
+		</dl>
+		<dl>
+			<dt>配送服务</dt>
+			<dd class="foot_dd"><a href="">运费政策</a><a href="">配送范围和时间</a>
+			<a href="">特殊订单配送</a>
+			<a href="">验货和签收</a></dd>
+			
+		</dl>
+		<dl>
+			<dt>支付方式</dt>
+			<dd class="foot_dd"><a href="">在线支付</a><a href="">货到付款</a>
+			<a href="">其他支付方式</a>
+			<a href="">发票制度</a></dd>
+			
+		</dl>
+		<dl>
+			<dt>售后服务</dt>
+			<dd class="foot_dd"><a href="">退换货服务</a>
+				<a href="">安装及维修</a>
+			<a href="">延保服务</a>
+			<a href="">召回商品</a></dd>
+			
+		</dl>
+		<dl>
+			<dt>特色服务</dt>
+			<dd class="foot_dd"><a href="">增值服务</a><a href="">订阅促销信息</a>
+			<a href="">沃尔玛信用卡</a></dd>
+			
+		</dl>
+		<dl>
+			<dt>帮助中心</dt>
+			<dd class="foot_dd"><a href="">常见问题</a><a href="">订单查询</a>
+			<a href="">忘记密码</a>
+			<a href="">联系我们</a></dd>
+			
+		</dl>
+	</div>
+	<p class="footer_about">
+			<a>关于山姆 |</a>
+			<a>山姆网购团队 |</a>
+			<a>价格政策 |</a>
+			<a>隐私政策</a>
+	</p>
+	<p class="footer_about">
+			<a href="">2010-2016 中国沃尔玛 版权所有 |</a>
+			<a href="">沪ICP备16047438号-1 |</a>
+			<a href="">浙公网安备 33011002011183号</a>
+	</p>
+</div>	
+			
+	</body>
+</html>

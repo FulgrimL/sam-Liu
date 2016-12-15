@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+		<script src="JS/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="JS/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="JS/utils.js" type="text/javascript" charset="utf-8"></script>
+		<script src="JS/login.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+		</script>
+		
+		
+	</head>
+	<body>
+		<div class="top">
+			<div class="box">
+				<div class="logo_box">
+					<img src="img/logo.png"/>
+				</div>
+				<h3><span>欢迎注册</span></h3>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="login">
+				<h1>注册</h1>
+				<div class="regist_form">
+					<input class="ipt_text"  type="text" name="" id="regist_name" value="用户名"  
+            />
+					<p class="regist_tips" id="regist_nametips">4-20位字符，可由中文、英文、数字或符号“_”组成
+</p>
+					<input class="ipt_text"   type="text" name="" id="regist_email" value="邮箱地址" onfocus='if(this.value=="邮箱地址"){this.value="";}; '   
+            onblur='if(this.value==""){this.value="邮箱地址";};'/>
+					<p id="regist_emailtips" class="regist_tips">请输入常用邮箱，可用作登录账户，接受订单通知和找回密码之用
+</p>
+					<input class="ipt_text"   type="password" name="" id="password" placeholder="设置密码" />
+					<p id="password_tips" class="regist_tips">6-20位字符，可由中文、英文、数字或符号组成
+</p>
+					<input class="ipt_text"   type="password" name="" id="regist_pwd"  placeholder="确认密码"/>
+					<p id="regist_pwdtips" class="regist_tips"></p>
+					<input class="ipt_text"   type="text" name="" id="regist_phoneNum" value="您的手机号" onfocus='if(this.value=="您的手机号"){this.value="";}; '   
+            onblur='if(this.value==""){this.value="您的手机号";};'/>
+            		<p id="regist_phoneNumtips" class="regist_tips"></p>
+            		<input class="ipt_text" style="width: 335px;"  type="text" name="" id="regist_code" value="验证码" >
+            		<span id="refresh-code">
+            			1111
+            		</span>
+					<p class="regist_tips" id="codetips">字母不区分大小写</p>
+					
+					<div class="regist_check">
+						<input type="checkbox" name="" id="" value="" />
+						<span id="">
+							订阅优惠信息
+						</span>
+					</div>
+					<div class="regist_check">
+						<input type="checkbox" name="" id="" value="" />
+						<span id="">
+							我已阅读并同意《山姆网站使用条款》
+						</span>
+					</div>
+					<div class="submit_box">
+						<a id="submit" >提交</a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

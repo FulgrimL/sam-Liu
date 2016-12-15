@@ -1,0 +1,247 @@
+body,ul,li,dl,dt,dd,p,ol,h1,h2,h3,h4,h5,h6,form,img,table,fieldset,legend{margin:0; padding:0;}
+ul,li,ol{list-style:none;}
+img,fieldset{border:0; }
+img{display:block;}
+a{text-decoration:none; color:#333;}
+h1,h2,h3,h4,h5,h6{font-weight:100;}
+body{font-size:12px; font-family:"微软雅黑";}
+input,a{outline:none;}
+
+html,body{
+	width:100%;
+}
+
+.cart-header{
+	width: 1200px;
+	height: 50px;
+	margin: 0 auto;
+	padding-top: 40px ;
+	background: red;
+}
+.cart-header-tit{
+	font-size: 20px;
+	width: 105px;
+	height: 50px;
+	line-height: 50px;
+	color: #0069aa;
+	float: left;
+	font-weight: 900;
+}
+.cart-header-add{
+	width: 190px;
+	height: 30px;
+	margin: 10px 0 0 10px;
+	background: blue;
+	float: left;
+}
+.cha-add{
+	width: 140px;
+	height: 28px;
+	padding: 0 12px;
+	margin-left: 20px;
+	background: green;
+	line-height: 28px;
+	cursor: pointer;
+}
+.cart-body{
+	width: 1200px;
+	border: 1px solid #e3e3e3;
+	margin: 0 auto 50px;
+}
+.cart-body-head{
+	width: 1170px;
+	height: 30px;
+	padding: 10px 15px;
+	background: green;
+}
+.cbh-tit{
+	font-size: 18px;
+	font-weight: 900;
+	color: #666;
+	line-height: 30px;
+	height: 32px;
+	float: left;
+}
+.cbn-turn{
+	width: 50px;
+	height: 31px;
+	display: block;
+	float: right;
+	background: lavenderblush;
+}
+.table-thead{
+	width: 1198px;
+	height: 50px;
+	color: #666;
+	line-height: 50px;
+	background: wheat;
+}
+.table-thead span{
+	height: 50px;
+	width: 160px;
+	display: block;
+	float:left;
+	text-align: center;
+}
+.tb-amount{
+	width: 160px;
+}
+.table-thead  .tb-chk{
+	width: 50px;
+	background: blue;
+}
+.table-thead  .tb-info{
+	width: 325px;
+}
+
+.cart-body-table{
+	width: 1198px;
+}
+.cart-body-table .table-tbody{
+	width: 1198px;
+}
+.table-tbody li{
+	width: 1198px;
+	height: 90px;
+	padding: 20px 0 ;
+	line-height: 18px;
+	background: saddlebrown;
+	display: block;
+	border-bottom: 1px solid #f7f7f7;
+}
+#table-tbody div{
+	height: 24px;
+	float: left;
+	width: 160px;
+	text-align: center;
+	color: #666;
+}
+#table-tbody .tt-total{
+	font-size: 14px;
+	font-weight: 900;
+	color: #0069aa;
+}
+#table-tbody .tt-amount{
+	padding-left: 40px;
+	width: 120px;
+}
+#table-tbody .tt-amount a{
+	width: 20px;
+	height: 26px;
+	display: block;
+	float: left;
+	background: #666;
+	margin-top: 3px;
+	line-height: 26px;
+}
+#table-tbody .tt-amount input{
+	width: 46px;
+	height: 20px;
+	margin-top: 3px;
+	float: left;
+	text-align: center;
+}
+#table-tbody .tt-chk{
+	width: 50px;
+	height: 18px;
+	background: blue;
+}
+#table-tbody .tt-info{
+	height: 90px;
+	width: 325px;
+	background: red;
+}
+#table-tbody .tt-info a{
+	width: 90px;
+	height: 90px;
+	display: block;
+	background: cadetblue;
+	float: left;
+}
+#table-tbody .tt-info span{
+	width: 200px;
+	text-align: left;
+	display: block;
+	float: left;
+}
+#table-tbody .tt-info p{
+	float: left;
+	margin-top: 5px;
+}
+#table-tbody .tt-info a img{
+	width: 90px;
+	height: 90px;
+	display: block;
+}
+.cart-body-footer{
+	width: 1198px;
+	height: 61px;
+	background: #f8f8f8;
+}
+.checek-total{
+	width: 235px;
+	height: 60px;	
+	float: right;
+}
+.check-amount{
+	width: 95px;
+	height: 40px;
+	margin-right: 20px;
+	padding: 10px 0;
+	float: left;
+}
+.check-amount span{
+	font-size: 18px;
+	color: #0069aa;
+	line-height: 20px;
+	font-weight: 900;
+}
+.check-btn{
+	width: 120px;
+	height: 60px;
+	background: #6cae38;
+	float: left;
+	font-size: 18px;
+	line-height: 60px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+}
+.detail-add{
+	width: 300px;
+	height: 136px;
+	padding: 10px 15px;
+	color: #666;
+	position: absolute;
+	left: 220px;
+	top: 50px;
+	background: #fff;
+	cursor: pointer;
+}
+.detail-add ul li{
+	float: left;
+	display: block;
+	width: 36px;
+	height: 24px;
+	margin:8px 0 0 ;
+	padding: 0 12px;
+	color: #666;
+	line-height: 24px;
+}
+.detail-add ul li a{
+	width: 36px;
+	height: 24px;
+}
+.detail-add ul li:hover{
+	background: blue;
+}
+.detail-btn-close{
+	width: 20px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	top: 0px;
+	background: green;
+	right: 0px;
+	text-align: center;
+}

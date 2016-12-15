@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/shopcar.css"/>
+		<script src="JS/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var addCart = $(".cart-add");
+				for(var i = 0; i <addCart.length;i++){
+					addCart[i].index = i;
+					addCart.eq(i).click(function(){
+						var num = $(".tt-amount").eq(this.index).find("input").eq(0).val();
+						num++;
+						$(".tt-amount").eq(this.index).find("input").eq(0).val(num);
+						total();
+					})
+				}
+				var subCart = $(".cart-sub");
+				for(var i = 0; i <subCart.length;i++){
+					subCart[i].index = i;
+					subCart.eq(i).click(function(){
+						var num = $(".tt-amount").eq(this.index).find("input").eq(0).val();
+						num--;
+						if(num == 0){
+							num = 1;
+						}
+						$(".tt-amount").eq(this.index).find("input").eq(0).val(num);
+						total();
+					})
+				}
+				$(".detail-btn-close").click(function(){
+					$(".detail-add").css("display", "none");
+				});
+				$(".cha-add").click(function(){
+					$(".detail-add").css("display", "block");
+				});
+				$(".detail-add").find("ul").find("li").click(function(){
+					console.log($(this).find("a").text());
+					$(".cha-addzone").text($(this).find("a").text());
+					$(".detail-add").css("display", "none");
+				})
+				
+				$(".cbn-turn").click(function(){
+				 	if($("#table-tbody").css("display")=="block"){
+				 		$(".table-thead").css("display", "none")
+				 		$("#table-tbody").css("display", "none");
+				 	}else{
+				 		$(".table-thead").css("display", "block")
+				 		$("#table-tbody").css("display", "block");
+				 	}
+				})
+			})
+			
+			function total(){
+				var total = $(".tt-total");
+				var totalNum = 0;
+				for(var i = 0; i < total.length;i++){
+					
+					var sum = parseFloat($(".tt-price").eq(i).html()) ;
+					var num =  parseFloat($(".tt-amount").eq(i).find("input").eq(0).val()) ;
+					var  money = sum*num;
+					totalNum += money;
+					console.log(sum+"|"+num);
+					$(".tt-total").eq(i).find("span").eq(0).text(money);
+				}
+				console.log();
+				$(".check-amount").find("span").html(totalNum);
+			}
+		</script>
+	</head>
+	<body>
+		<div class="cart-header">
+			<h2 class="cart-header-tit">我的购物车</h2>
+			<div class="cart-header-add">
+				<div class="cha-add">
+					<span>上海 上海市 <b style="font-weight: 100;" class="cha-addzone">请选择区</b></span>
+					<i class="arrow-iconfont"></i>
+				</div>
+				<div class="detail-add" style="display: none;">
+					<ul>
+						<li><a href="#">黄浦区</a></li>
+						<li><a href="#">卢湾区</a></li>
+						<li><a href="#">徐汇区</a></li>
+						<li><a href="#">长宁区</a></li>
+						<li><a href="#">静安区</a></li>
+						<li><a href="#">普陀区</a></li>
+						<li><a href="#">闸北区</a></li>
+						<li><a href="#">虹口区</a></li>
+						<li><a href="#">杨浦区</a></li>
+						<li><a href="#">闵行区</a></li>
+						<li><a href="#">宝山区</a></li>
+						<li><a href="#">嘉定区</a></li>
+						<li><a href="#">金山区</a></li>
+						<li><a href="#">松江区</a></li>
+						<li><a href="#">青浦区</a></li>
+						<li><a href="#">南汇区</a></li>
+					</ul>
+					<span class="detail-btn-close">X</span>
+				</div>
+			</div>
+			<i style="float: right;">灯泡</i>
+		</div>
+		<div class="cart-body clear">
+			<div class="cart-body-head">
+				<h2 class="cbh-tit">普通商品</h2>
+				<a href="javascript:;" class="cbn-turn">
+					<span>收起</span>
+					<i></i>
+				</a>
+			</div>
+			<div class="cart-body-table">
+				<div class="table-thead">
+					<span class="tb-chk"></span>
+					<span class="tb-info">商品信息</span>
+					<span class="tb-price">单价（元）</span>
+					<span class="tb-amount">数量</span>
+					<span class="tb-weight">重量（含包装）</span>
+					<span class="tb-total">小计（元）</span>
+					<span class="tb-oper">操作</span>
+				</div>
+				<ul class="table-tbody" id="table-tbody">
+					<li>
+						<div class="tt-chk"></div>
+						<div class="tt-info">
+							<a href="javascript:;"><img src=""/></a>
+							<span>伟嘉 Whiskas鲜包精选金枪鱼成猫猫粮85gx12袋 Item#:625770</span>
+							<p>支持7天无理由退货 </p>
+						</div>
+						<div class="tt-price"> 40.00</div>
+						<div class="tt-amount">
+							<a href="javascript:;" class="cart-sub">减</a>
+							<input type="text" value="1"/>
+							<a href="javascript:;" class="cart-add">加</a>
+						</div>
+						<div class="tt-weight">1.02kg</div>
+						<div class="tt-total">￥ <span>40.00</span></div>
+						<div class="tt-oper"></div>
+						
+					</li>
+					<li>
+						<div class="tt-chk"></div>
+						<div class="tt-info">
+							<a href="javascript:;"><img src=""/></a>
+							<span>伟嘉 Whiskas鲜包精选金枪鱼成猫猫粮85gx12袋 Item#:625770</span>
+							<p>支持7天无理由退货 </p>
+						</div>
+						<div class="tt-price">30.00</div>
+						<div class="tt-amount">
+							<a href="javascript:;" class="cart-sub">减</a>
+							<input type="text" value="1"/>
+							<a href="javascript:;" class="cart-add">加</a>
+						</div>
+						<div class="tt-weight">1.02kg</div>
+						<div class="tt-total">￥ <span>30.00</span></div>
+						<div class="tt-oper"></div>
+						
+					</li>
+					
+				</ul>
+			</div>
+			<div class="cart-body-footer">
+				<div class="checek-total">
+					<div class="check-amount">
+						<p style="color: #666;">合计</p>
+						<a href="javascript:;" style="color: #666;">¥</a><span>95.00</span>
+					</div>
+					<div class="check-btn">去结算</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
